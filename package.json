@@ -30,9 +30,10 @@
     "e2e"
   ],
   "scripts": {
-    "prebuild": "tsx scripts/prebuild.mts && npm run lint",
+    "prebuild": "tsx scripts/prebuild.mts",
     "build": "cross-env NODE_OPTIONS=--max-old-space-size=6144 next build --webpack",
     "postbuild": "npm run build-sitemap && npm run build-migrate-db",
+    "asset-prefix:bucket": "tsx scripts/bucketAssetPrefix/index.ts",
     "build-migrate-db": "bun run db:migrate",
     "build-sitemap": "tsx ./scripts/buildSitemapIndex/index.ts",
     "build:analyze": "NODE_OPTIONS=--max-old-space-size=6144 ANALYZE=true next build --webpack",
@@ -68,7 +69,6 @@
     "lint:mdx": "npm run workflow:mdx && remark \"docs/**/*.mdx\" -r ./.remarkrc.mdx.js --silent --output && eslint \"docs/**/*.mdx\" --quiet --fix",
     "lint:style": "stylelint \"{src,tests}/**/*.{js,jsx,ts,tsx}\" --fix",
     "lint:ts": "eslint \"{src,tests}/**/*.{js,jsx,ts,tsx}\" --fix",
-    "prepare": "husky",
     "prettier": "prettier -c --write \"**/**\"",
     "pull": "git pull",
     "reinstall": "rm -rf .next && rm -rf node_modules && pnpm -r exec rm -rf node_modules && pnpm install",

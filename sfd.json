@@ -1,0 +1,9 @@
+[
+{
+"AllowedOrigins": [
+"https://ai.buxo.ca"
+],
+"AllowedMethods": [
+"GET", "PUT", "HEAD", "POST", "DELETE" ]
+}
+]
