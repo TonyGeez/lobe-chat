@@ -11,11 +11,11 @@ export const chainSummaryGenerationTitle = (
   return {
     messages: [
       {
-        content: `你是一位资深的 AI 艺术创作者和语言大师。你需要根据用户提供的 AI ${modal} prompt 总结出一个标题。这个标题应简洁地描述创作的核心内容，将用于标识和管理该系列作品。字数需控制在10个字以内，不需要包含标点符号，输出语言为：${locale}。`,
+        content: `You are an experienced AI art creator and linguistic expert. Based on the user's AI ${modal} prompts, you must generate a concise title summarizing the core concept of the creation. The title must be within 10 characters, contain no punctuation, and be written in the target language: ${locale}. This title will be used for identifying and organizing the作品 series.`,
         role: 'system',
       },
       {
-        content: `提示词：\n${formattedPrompts}`,
+        content: `Prompts:\n${formattedPrompts}`,
         role: 'user',
       },
     ],

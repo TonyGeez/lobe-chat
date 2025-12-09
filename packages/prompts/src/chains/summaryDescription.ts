@@ -6,46 +6,47 @@ export const chainSummaryDescription = (
 ): Partial<ChatStreamPayload> => ({
   messages: [
     {
-      content: `你是一名擅长技能总结的助理，你需要将用户的输入的内容总结为一个角色技能简介，不超过 20 个字。内容需要确保信息清晰、逻辑清晰，并有效地传达角色的技能和经验，需要并翻译为目标语言:${locale}。格式要求如下：\n输入: {文本作为JSON引用字符串} [locale]\n输出: {简介}`,
+      content: `You are an assistant skilled at summarizing abilities. You must summarize the user’s input into a short role skill description within 20 characters. The description must be clear, logically structured, effectively convey the character’s skills and experience, and be translated into the target language: ${locale}. Format requirements:\nInput: {text as JSON-quoted string} [locale]\nOutput: {summary}`,
       role: 'system',
     },
     {
-      content: `输入: {你是一名文案大师，帮我为一些设计 / 艺术作品起名，名字需要有文学内涵，注重精炼和赋子意境，表达作品的情景氛国，使名称既简洁又富有诗意。} [zh-CN]`,
+      content: `Input: {You are a copywriting master helping me name design/artworks. Names must have literary depth, be concise, poetic, and convey atmosphere and emotion.} [zh-CN]`,
       role: 'user',
     },
-    { content: '擅长文创艺术作品起名', role: 'assistant' },
+    { content: 'Skilled in naming artistic and creative works', role: 'assistant' },
     {
-      content: `输入: {你是一名创业计划撰写专家，可以提供包括创意名称、简短的标语、目标用户画像、用户痛点、主要价值主张、销售/营销渠道、收入流、成本结构等计划生成。} [en-US]`,
+      content: `Input: {You are an expert in writing business plans. You can provide creative names, short slogans, target user personas, user pain points, key value propositions, sales/marketing channels, revenue streams, cost structures, and more.} [en-US]`,
       role: 'user',
     },
     { content: 'Good at business plan writing and consulting', role: 'assistant' },
     {
-      content: `输入: {You are a frontend expert. Please convert the code below to TS without modifying the implementation. If there are global variables not defined in the original JS, you need to add type declarations using declare.} [zh-CN]`,
+      content: `Input: {You are a frontend expert. Please convert the following code to TS without modifying the implementation. If the original JS contains undefined global variables, add type declarations using declare.} [zh-CN]`,
       role: 'user',
     },
-    { content: '擅长 ts 转换和补充类型声明', role: 'assistant' },
+    { content: 'Skilled in TS conversion and adding type declarations', role: 'assistant' },
     {
-      content: `输入: {
-用户正常书写面向开发者的 API 用户使用文档。你需要从用户的视角来提供比较易用易读的文档内容。\n\n一个标准的 API 文档示例如下：\n\n\`\`\`markdown
+      content: `Input: {
+The user is writing developer-facing API documentation. You must rewrite it to be easy to read and user-friendly from the developer's perspective.\n\nA standard API documentation example:\n\n\`\`\`markdown
 ---
 title: useWatchPluginMessage
-description: 监听获取 LobeChat 发过来的插件消息
+description: Listen and receive plugin messages from LobeChat
 nav: API
----\n\n\`useWatchPluginMessage\` 是 Chat Plugin SDK 封装一个的 React Hook，用于监听从 LobeChat 发过来的插件消息。
+---
+\n\n\`useWatchPluginMessage\` is a React Hook from the Chat Plugin SDK that listens for plugin messages from LobeChat.
 } [ru-RU]`,
       role: 'user',
     },
     {
       content:
-        'Специализируется на создании хорошо структурированной и профессиональной документации README для GitHub с точными техническими терминами',
+        'Specializes in creating well-structured and professional GitHub README documentation with accurate technical terminology',
       role: 'assistant',
     },
     {
-      content: `输入: {你是一名创业计划撰写专家，可以提供包括创意名称、简短的标语、目标用户画像、用户痛点、主要价值主张、销售/营销渠道、收入流、成本结构等计划生成。} [zh-CN]`,
+      content: `Input: {You are an expert in writing business plans. You can provide creative names, short slogans, target user personas, user pain points, key value propositions, sales/marketing channels, revenue streams, cost structures, and more.} [zh-CN]`,
       role: 'user',
     },
-    { content: '擅长创业计划撰写与咨询', role: 'assistant' },
-    { content: `输入: {${content}} [${locale}]`, role: 'user' },
+    { content: 'Skilled in business plan writing and consulting', role: 'assistant' },
+    { content: `Input: {${content}} [${locale}]`, role: 'user' },
   ],
   temperature: 0,
 });
