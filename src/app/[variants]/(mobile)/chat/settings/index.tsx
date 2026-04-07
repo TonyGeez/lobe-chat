@@ -14,20 +14,18 @@ import Footer from '@/features/Setting/Footer';
 import { useAgentStore } from '@/store/agent';
 import { agentSelectors } from '@/store/agent/selectors';
 import { ChatSettingsTabs } from '@/store/global/initialState';
-import { useSessionStore } from '@/store/session';
-
 export default memo(() => {
   const { t } = useTranslation('setting');
   const [tab, setTab] = useState(ChatSettingsTabs.Prompt);
   const cateItems = useCategory();
-  const id = useSessionStore((s) => s.activeId);
 
-  const [updateAgentConfig, updateAgentMeta, config, meta, title] = useAgentStore((s) => [
+  const [updateAgentConfig, updateAgentMeta, config, meta, title, id] = useAgentStore((s) => [
     s.updateAgentConfig,
     s.updateAgentMeta,
     agentSelectors.currentAgentConfig(s),
     agentSelectors.currentAgentMeta(s),
     agentSelectors.currentAgentTitle(s),
+    s.activeAgentId,
   ]);
 
   const isLoading = false;
@@ -44,15 +42,17 @@ export default memo(() => {
           borderBottom: `1px solid ${cssVar.colorBorderSecondary}`,
         }}
       />
-      <AgentSettings
-        config={config}
-        id={id}
-        loading={isLoading}
-        meta={meta}
-        onConfigChange={updateAgentConfig}
-        onMetaChange={updateAgentMeta}
-        tab={tab}
-      />
+      {id && (
+        <AgentSettings
+          config={config}
+          id={id}
+          loading={isLoading}
+          meta={meta}
+          onConfigChange={updateAgentConfig}
+          onMetaChange={updateAgentMeta}
+          tab={tab}
+        />
+      )}
       <Footer />
     </MobileContentLayout>
   );
